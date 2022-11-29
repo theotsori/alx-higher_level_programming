@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-for i in range(ord('a'), ord('z')+1):
+for i in range(97, 123):
     n = chr(i)
-    if n not in "qe":
-        print(n, end="")
+    if n not in "eq":
+        print("{}".format(n), end="")
