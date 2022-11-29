@@ -1,4 +1,3 @@
-#!/usr/bin/bash
+#!/usr/bin/python3
 for n in range(0, 100):
-	if  n > 0:
-		print(n, end=", ")
+    print("{:02d}, ".format(n), end="")
