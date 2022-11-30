@@ -28,4 +28,4 @@ Namespaces are one honking great idea -- let's do more of those!
 
 ## Pycodestyle
 <img src="https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/231/Flyingcircus_2.jpg">
-### All python code is checked by the pythoncodestyle.
+Kept in check by the pythoncodestyle.
