@@ -1,4 +1,4 @@
-#include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "lists.h"
 
@@ -15,29 +15,30 @@ int is_palindrome(listint_t **head)
 		return (1);
 	}
 
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+
 	listint_t **stack = malloc(sizeof(listint_t *));
-	int top = 0;
+	int top = -1;
 
-	listint_t *current = *head;
-
-	while (current != NULL)
+	while (fast != NULL && fast->next != NULL)
 	{
-		stack[top] = current;
-		top++;
-		current = current->next;
+		stack[++top] = slow;
+
+		slow = slow->next;
+		fast = fast->next->next;
 	}
 
-	current = *head;
-	top--;
-	while (current != NULL)
+	while (top >= 0 && slow != NULL)
 	{
-		if (current->n != stack[top]->n)
+		if (stack[top]->n != slow->n)
 		{
 			free(stack);
 			return (0);
 		}
-		current = current->next;
+
 		top--;
+		slow = slow->next;
 	}
 
 	free(stack);
