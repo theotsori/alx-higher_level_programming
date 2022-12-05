@@ -10,37 +10,30 @@
  */
 int is_palindrome(listint_t **head)
 {
+	listint_t *node = *head;
+	int *numbers, i = 0, j;
+
 	if (*head == NULL)
-	{
 		return (1);
+
+	numbers = malloc(1024 * sizeof(int));
+	if (numbers == NULL)
+		return (0);
+
+	while (node != NULL)
+	{
+		numbers[i] = node->n;
+		node = node->next;
+		i++;
 	}
 
-	listint_t *slow = *head;
-	listint_t *fast = *head;
-
-	listint_t **stack = malloc(sizeof(listint_t *));
-	int top = -1;
-
-	while (fast != NULL && fast->next != NULL)
-	{
-		stack[++top] = slow;
-
-		slow = slow->next;
-		fast = fast->next->next;
-	}
-
-	while (top >= 0 && slow != NULL)
-	{
-		if (stack[top]->n != slow->n)
+	for (j = 0; j < i / 2; j++)
+		if (numbers[j] != numbers[i - j -1])
 		{
-			free(stack);
+			free(numbers);
 			return (0);
 		}
 
-		top--;
-		slow = slow->next;
-	}
-
-	free(stack);
+	free(numbers);
 	return (1);
 }
