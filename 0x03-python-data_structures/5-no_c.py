@@ -1,7 +1,6 @@
 def no_c(my_string):
-    rm = ["c", "C"]
     s = ""
     for i in my_string:
-        if i not in rm:
+        if i != 'c' and i != 'C':
             s += i
-    return str(s)
+    return s
