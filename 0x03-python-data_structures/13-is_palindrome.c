@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdbool.h>
+#include <stddef.h>
 #include "lists.h"
 
 /**
@@ -10,38 +10,44 @@
  */
 int is_palindrome(listint_t **head)
 {
-	if (!head || !*head || !(*head)->next)
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+	listint_t *prev = NULL;
+	listint_t *next;
+	bool is_palindrome = true;
+
+	if (head == NULL)
+	{
 		return (1);
+	}
+	while (fast != NULL && fast->next != NULL)
+	{
+		fast = fast->next->next;
 
-	listint_t *slow = *head, *fast = *head;
-
-	while (fast && fast->next)
+		next = slow->next;
+		slow->next = prev;
+		prev = slow;
+		slow = next;
+	}
+	if (fast != NULL)
 	{
 		slow = slow->next;
-		fast = fast->next->next;
 	}
-
-	listint_t *last = slow, *prev = NULL;
-
-	while (last)
+	while (prev != NULL && is_palindrome)
 	{
-		listint_t *next = last->next;
-
-		last->next = prev;
-		prev = last;
-		last = next;
-	}
-
-	listint_t *first = *head;
-
-	while (prev)
-	{
-		if (prev->n != first->n)
-			return (0);
-
+		is_palindrome = (prev->n == slow->n);
 		prev = prev->next;
-		first = first->next;
+		slow = slow->next;
 	}
+	slow = *head;
+	prev = NULL;
 
-	return (1);
+	while (slow != NULL)
+	{
+		next = slow->next;
+		slow->next = prev;
+		prev = slow;
+		slow = next;
+	}
+	return (is_palindrome);
 }
