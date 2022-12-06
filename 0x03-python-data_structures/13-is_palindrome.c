@@ -10,30 +10,27 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *node = *head;
-	int *numbers, i = 0, j;
-
 	if (*head == NULL)
 		return (1);
 
-	numbers = malloc(1024 * sizeof(int));
-	if (numbers == NULL)
-		return (0);
+	listint_t *current = *head;
+	int length = 0;
 
-	while (node != NULL)
+	while (current != NULL)
 	{
-		numbers[i] = node->n;
-		node = node->next;
-		i++;
+		length++;
+		current = current->next;
 	}
 
-	for (j = 0; j < i / 2; j++)
-		if (numbers[j] != numbers[i - j -1])
-		{
-			free(numbers);
-			return (0);
-		}
+	current = *head;
 
-	free(numbers);
-	return (1);
+	for (int i = 0; i < length / 2; i++)
+	{
+		if (current->n != current->next->n)
+		return (1);
+
+		current = current->next;
+	}
+
+	return (0);
 }
