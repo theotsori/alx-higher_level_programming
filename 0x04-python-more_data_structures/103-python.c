@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <python3.10/Python.h>
+#include <python3.4/Python.h>
 
 void print_python_list(PyObject *p) {
   if (!PyList_Check(p)) {
