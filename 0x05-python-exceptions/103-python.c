@@ -13,15 +13,17 @@ void print_python_list(PyObject *p)
 		return;
 	}
 
-	Py_ssize_t size = PyList_Size(p);
+	int size = PyList_Size(p);
 
-	printf("Number of elements in the list: %zd\n", size);
+	printf("Size of the list: %d\n", size);
 
-	for (Py_ssize_t i = 0; i < size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		PyObject *item = PyList_GetItem(p, i);
 
-		printf("Element at index %zd: %s\n", i, PyUnicode_AsUTF8(item));
+		printf("Element at index %d: ", i);
+		Pyobject_Print(item, stdout, 0);
+		printf("\n");
 	}
 }
 /**
@@ -36,19 +38,16 @@ void print_python_bytes(PyObject *p)
 		return;
 	}
 
-	Py_ssize_t size = PyBytes_Size(p);
+	int size = PyBytes_Size(p);
 
-	printf("Number of bytes in the object: %zd\n", size);
+	printf("Size of the bytes object: %d\n", size);
 
-	if (size >= 10)
+	printf("First 10 bytes: ");
+	for (int i = 0; i < 10; i++)
 	{
-		printf("First 10 bytes: ");
-		for (int i = 0; i < 10; i++)
-		{
-			printf("%02x ", PyBytes_AS_STRING(p)[i]);
-		}
-		printf("\n");
+		printf("%02x ", PyBytes_AS_STRING(p)[i]);
 	}
+	printf("\n");
 }
 /**
  * print_python_float - function to print py float objects
@@ -64,5 +63,5 @@ void print_python_float(PyObject *p)
 
 	double value = PyFloat_AS_DOUBLE(p);
 
-	printf("Value of the float object: %f\n", value);
+	printf("Value of the float: %f\n", value);
 }
