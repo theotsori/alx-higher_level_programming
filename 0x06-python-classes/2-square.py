@@ -3,11 +3,22 @@
 
 
 class Square:
+    """A class representing a square.
+
+    Attributes:
+        size (int): The size of the square.
+
+    """
+
     def __init__(self, size=0):
-        """__init__ defined.
+        """Initialize a Square.
 
         Args:
-            param (float): size is set to 0.
+            size (int, optional): The size of the square. Dfaults to 0.
+
+        Raises:
+            TypeError: If size is not an integer.
+            ValueError: If size is less than 0.
 
         """
         if not isinstance(size, int):
