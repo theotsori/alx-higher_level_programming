@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+import unittest
+
+
+Class Testadd(unitest,Testcase)
+    """A class used to test add class"""
+    def test_add_integer():
+        assert add_integer(2, 3) == 5
+        assert add_integer(2.5, 3.5) == 6
+        assert add_integer(-2, 3) == 1
+        assert add_integer(2, -3) == -1
+        assert add_integer(2.9, 3.1) == 6
+        assert add_integer(2, 3.9) == 5
+        assert add_integer(2.9, 3) == 5
+        assert add_integer(2) == 100
+        assert add_integer(2.5) == 100
+        assert add_integer(-2) == 96
+        assert add_integer(-2.5) == 96
