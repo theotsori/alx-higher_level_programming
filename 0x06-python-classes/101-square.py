@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """A class that defines a square."""
 
+
 class Square:
     """
     This class represents a square. It has a size and a position,\
@@ -44,7 +45,8 @@ class Square:
         """
         Set te position of the square to the given value.
         """
-        if not isinstance(value, tuple) or len(value) != 2 or not all(isinstance(x, int) and x >= 0 for x in value):
+        if not isinstance(value, tuple) or len(value) != 2 or\
+           not all(isinstance(x, int) and x >= 0 for x in value):
             raise TypeError("position must be a tuple of 2 positive integers")
         self._position = value
 
@@ -53,6 +55,7 @@ class Square:
         Return the area of the square.
         """
         return self.size ** 2
+
     def my_print(self):
         """
         Print the square to stdout.
@@ -65,6 +68,7 @@ class Square:
         for _ in range(self.size):
             result += " " * self.position[0] + "#" * self.size + "\n"
         return result
+
     def __str__(self):
         """
         Return a string representation of the square.
