@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A class Square that defines a square"""
+"""A class Square that defines a square."""
 
 
 class Square:
@@ -16,7 +16,7 @@ class Square:
 
     @property
     def size(self):
-        """property defining size"""
+        """property defining size."""
         return self._size
 
     @size.setter
@@ -35,7 +35,7 @@ class Square:
 
     @property
     def position(self):
-        """property defining square position"""
+        """property defining square position."""
         return self._position
 
     @position.setter
@@ -52,11 +52,11 @@ class Square:
         self._position = value
 
     def area(self):
-        """used to obtain area of square"""
+        """used to obtain area of square."""
         return self.size ** 2
 
     def my_print(self):
-        """used to print value and sie of square"""
+        """used to print value and sie of square."""
         if self.size == 0:
             print()
         else:
