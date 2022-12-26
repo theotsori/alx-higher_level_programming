@@ -5,7 +5,11 @@
 class Square:
     """A class that represents a square.
 
-    This class has a private attribute `size` which represents the size of the square, and a private attribute `position` which represents the position of the square. The `size` attribute must be an integer, and the `position` attribute must be a tuple of 2 positive integers.
+    This class has a private attribute `size` which represents the size of\
+    the square, and a private attribute `position` which represents the\
+    position of the square.\
+    The `size` attribute must be an integer, and the `position` attribute must\
+    be a tuple of 2 positive integers.
 
     Attributes:
         size (int): The size of the square.
