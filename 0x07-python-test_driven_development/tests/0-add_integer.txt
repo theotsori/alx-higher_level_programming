@@ -1,12 +1,15 @@
-def test_add_integer():
-    assert add_integer(2, 3) == 5
-    assert add_integer(2.5, 3.5) == 6
-    assert add_integer(-2, 3) == 1
-    assert add_integer(2, -3) == -1
-    assert add_integer(2.9, 3.1) == 6
-    assert add_integer(2, 3.9) == 5
-    assert add_integer(2.9, 3) == 5
-    assert add_integer(2) == 100
-    assert add_integer(2.5) == 100
-    assert add_integer(-2) == 96
-    assert add_integer(-2.5) == 96
+#!/usr/bin/python3
+import unittest
+
+class TestAddInteger(unittest.TestCase):
+    def test_add_integer(self):
+        self.assertEqual(add_integer(1, 2), 3)
+        self.assertEqual(add_integer(1.5, 2.5), 4)
+        self.assertEqual(add_integer(1, 2.5), 3)
+        self.assertEqual(add_integer(1.5, 2), 3)
+        self.assertEqual(add_integer(1), 99)
+        self.assertEqual(add_integer(1.5), 99)
+        self.assertRaises(TypeError, add_integer, "a", "b")
+
+if __name__ == '__main__':
+    unittest.main()
