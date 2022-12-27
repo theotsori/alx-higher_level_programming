@@ -2,11 +2,23 @@
 """Unittst function for text indentation
 """
 import unittest
-text_indentation = __import__('5-text_indentation').text_indetation
+
+def text_indentation(text):
+    # check if text is a string
+    if not isinstance(text, str):
+        raise TypeError('text must be a string')
+
+    # iterate through the characters in the text
+    for i, char in enumerate(text):
+        # print the character
+        print(char, end='')
+        # if the character is one of the specified characters, add 2 new lines
+        if char in ['.', '?', ':']:
+            print('\n' * 2)
 
 class TestTextIndentation(unittest.TestCase):
     def test_text_indentation(self):
-        #test for the text_indentation function
+        # test for the text_indentation function
         with self.assertRaises(TypeError):
             text_indentation(123)
         self.assertEqual(text_indentation('Hello. How are you? I am fine: thank you.'), 'Hello.\n\nHow are you?\n\nI am fine:\n\nthank you.')
