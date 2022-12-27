@@ -1,0 +1,16 @@
+#!/usr/bin/python3
+"""Unittst function for text indentation
+"""
+import unittest
+text_indentation = __import__('5-text_indentation').text_indetation
+
+class TestTextIndentation(unittest.TestCase):
+    def test_text_indentation(self):
+        #test for the text_indentation function
+        with self.assertRaises(TypeError):
+            text_indentation(123)
+        self.assertEqual(text_indentation('Hello. How are you? I am fine: thank you.'), 'Hello.\n\nHow are you?\n\nI am fine:\n\nthank you.')
+        self.assertEqual(text_indentation('This is a test.'), 'This is a test.')
+
+if __name__ == '__main__':
+    unittest.main()
