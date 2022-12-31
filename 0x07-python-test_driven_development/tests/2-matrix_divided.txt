@@ -1,0 +1,52 @@
+#!/usr/bin/python3
+
+import unittest
+
+from matrix_divided import matrix_divided
+
+class MatrixDividedTestCase(unittest.TestCase):
+    def test_matrix_divided(self):
+        # Test with valid input
+        result = matrix_divided([[1, 2], [3, 4]], 2)
+        self.assertEqual(result, [[0.5, 1.0], [1.5, 2.0]])
+
+        # Test with valid input and odd number of decimal places
+        result = matrix_divided([[1, 2], [3, 4]], 3)
+        self.assertEqual(result, [[0.33, 0.67], [1.0, 1.33]])
+
+        # Test with valid input and even number of decimal places
+        result = matrix_divided([[1, 2], [3, 4]], 4)
+        self.assertEqual(result, [[0.25, 0.5],[0.75, 1.0]])
+
+    def test_matrix_divided_invalid_div(self):
+        # Test with div that is not a number
+        with self.assertRaises(TypeError) as context:
+            matrix_divided([[1, 2], [3, 4]], "a")
+        self.assertEqual(str(context.exception), "div must be a number")
+
+        # Test with div that is equal to 0
+        with self.assertRaises(ZeroDivisionError) as context:
+            matrix_divided([[1, 2], [3, 4]], 0)
+        self.assertEqual(str(context.exception), "division by zero")
+
+    def test_matrix_divided_invalid_matrix(self):
+        # Test with matrix that is not a list of lists
+        with self.assertRaises(TypeError) as context:
+            matrix_divided([1, 2, 3, 4], 2)
+        self.assertEqual(str(context.exception), "matrix must be a matrix (list of lists) of integers/floats")
+
+        # Test with matrix that contains a row that is not a list
+        with self.assertRaises(TypeError) as context:
+            matrix_divided([[1, 2], 3, 4], 2)
+        self.assertEqual(str(context.exception), "matrix must be a matrix (list of lists) of integers/floats")
+
+        # Test with matrix that contains an element that is not an integer or float
+        with self.assertRaises(TypeError) as context:
+            matrix_divided([[1, 2], [3, "a"]], 2)
+        self.assertEqual(str(context.exception), "matrix must be a matrix (list of lists) of integers/floats")
+
+    def test_matrix_divided_invalid_row_length(self):
+        # Test with matrix that contains a row with different length
+        with self.assertRiases(TypeError) as context:
+            matrix_divided([[1, 2], [3]], 2)
+        self.assertEqual(str(context.exception), "Each row of the matrix must have the same size")
