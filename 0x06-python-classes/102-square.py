@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """A class that compares 2 squares."""
 
+
 class Square:
     """Class that represents a square.
 
@@ -75,7 +76,8 @@ class Square:
             other (Square): The other square to compare with.
 
         Returns:
-            bool: True if the current square has a greater area than the other square, False otherwise.
+            bool: True if the current square has a greater area than the other\
+                  square, False otherwise.
         """
         return self.area() > other.area()
 
@@ -86,7 +88,8 @@ class Square:
             other (Square): The other square to compare with.
 
         Returns:
-            bool: True if the current square has a greater or equal area than the other square, False otherwise.
+            bool: True if the current square has a greater or equal area than\
+                  the other square, False otherwise.
         """
         return self.area() >= other.area()
 
@@ -97,7 +100,8 @@ class Square:
             other (Square): The other square to compare with.
 
         Returns:
-            bool: True if the current square has a smaller area than the other square, False otherwise.
+            bool: True if the current square has a smaller area than the other\
+                  square, False otherwise.
         """
         return self.area() < other.area()
 
@@ -108,6 +112,7 @@ class Square:
             other (Square): The other square to compare with.
 
         Returns:
-            bool: True if the current square has a smaller or equal area than the other square, False otherwise.
+            bool: True if the current square has a smaller or equal area than\
+                  the other square, False otherwise.
         """
         return self.area() <= other.area()
