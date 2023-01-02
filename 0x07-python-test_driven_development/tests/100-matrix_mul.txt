@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+
+import unittest
+
+class TestMatrixMul(unittest.TestCase):
+    def test_matrix_mul(self):
+        self.assertEqual(matrix_mul([[1, 2], [3, 4]], [[2, 0], [1, 2]]), [[4, 4], [10, 8]])
+        self.assertEqual(matrix_mul([[1, 2, 3], [4, 5, 6]], [[1, 2], [3, 4], [5, 6]]), [[22, 28], [49, 64]])
+        self.assertEqual(matrix_mul([[1, 2], [3, 4]], [[5, 6]]), [[5, 6], [15, 18]])
+        self.assertEqual(matrix_mul([[1, 2]], [[5], [6]]), [[17]])
+        self.assertEqual(matrix_mul([[1, 2], [3, 4]], [[5, 6, 7], [8, 9, 10]]), [[26, 31, 36], [38, 45, 52]])
+
+if __name__ == '__main__':
+    unittest.main()
