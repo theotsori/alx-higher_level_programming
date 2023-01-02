@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""A class that compares 2 squares."""
+
 class Square:
     """Class that represents a square.
 
