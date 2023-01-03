@@ -1,7 +1,7 @@
 <h1>0x08-python-more_classes</h1>
 <h2>General</h2>
 <img src="https://thumbs.dreamstime.com/b/oop-object-oriented-programming-acronym-business-concept-blackboard-223373038.jpg">
-<ul>
+<p>
 Why Python programming is awesome
 What is OOP
 “first-class everything”
@@ -28,4 +28,4 @@ How to bind attributes to object and classes
 What is and what does contain __dict__ of a class and of an instance of a class
 How does Python find the attributes of an object or class
 How to use the getattr function
-</ul>
+</p>
