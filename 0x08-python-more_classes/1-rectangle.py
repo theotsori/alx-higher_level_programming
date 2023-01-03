@@ -3,6 +3,7 @@
 
 
 class Rectangle:
+    """A class rectangle to check area and perimeter"""
     def __init__(self, width=0, height=0):
         """Creating width and height options."""
         self.height = height
