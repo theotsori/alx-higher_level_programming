@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """A class Rectangle that defines a rectangle"""
 
+
 class Rectangle:
     """A class Rectangle to detect instance deletion"""
     def __init__(self, width=0, height=0):
