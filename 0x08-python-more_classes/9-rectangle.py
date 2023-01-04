@@ -30,7 +30,7 @@ class Rectangle:
 
     @height.setter
     def height(self, value):
-        if not isinstance(value, int)
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
@@ -42,7 +42,7 @@ class Rectangle:
     def perimeter(self):
         if self.width == 0 or self.height == 0:
             return 0
-        2 * (self.width + self.height)
+        return 2 * (self.width + self.height)
 
     def __str__(self):
         if self.width == 0 or self.height == 0:
@@ -58,7 +58,7 @@ class Rectangle:
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
-        if not isinstance(value, rect_1)
+        if not isinstance(value, rect_1):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(value, rect_2):
             raise TypeError("rect_2 must be an instance of Rectangle")
@@ -67,6 +67,5 @@ class Rectangle:
         return rect_2
 
     @classmethod
-    def square(cls, size=0)
-        self.size = size
-        return cls.size
+    def square(cls, size=0):
+        return cls(size, size)
