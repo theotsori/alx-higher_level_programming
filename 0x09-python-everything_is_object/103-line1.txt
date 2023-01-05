@@ -1,1 +1,1 @@
-A new int object with the value 1 is created.
+1

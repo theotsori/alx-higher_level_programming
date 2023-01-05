@@ -1,1 +1,1 @@
-An existing int object with the value 1 is re-used, so no new int object is created.
+0
