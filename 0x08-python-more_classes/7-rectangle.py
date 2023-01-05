@@ -45,9 +45,10 @@ class Rectangle:
         return 2 * (self.height + self.width)
 
     def __str__(self):
+        symbol = self.print_symbol
         if self.width == 0 or self.height == 0:
             return ""
-        return "\n".join(str(self.print_symbol) * self.width for i in range(self.height))
+        return "\n".join(str(symbol) * self.width for i in range(self.height))
 
     def __del__(self):
         Rectangle.number_of_instances -= 1
