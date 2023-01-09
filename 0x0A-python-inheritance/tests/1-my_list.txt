@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+def test_print_sorted(self):
+    # Test with an unsorted list
+    my_list = MyList([3, 2, 1])
+    with patch('sys.stdout', new=StringIO()) as fake_out:
+        my_list.print_sorted()
+        assert fake_out.getvalue() == "1 2 3\n"
+
+    # Test with a sorted list
+    my_list = MyList([1, 2, 3])
+    with patch('sys.stdout', new=StringIO()) as fake_out:
+        my_list.print_sorted()
+        assert fake_out.getvalue() == "1 2 3\n"
+
+    # Test with an empty list
+    my_list = MyList([])
+    with patch('sys.stdout', new=StringIO()) as fake_out:
+        my_list.print_sorted()
+        assert fake_out.getvalue() == "\n"
