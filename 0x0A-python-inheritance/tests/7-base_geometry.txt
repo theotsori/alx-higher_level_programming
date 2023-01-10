@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import unittest
+
 class TestBaseGeometry(unittest.TestCase):
     def test_area(self):
         geometry = BaseGeometry()
