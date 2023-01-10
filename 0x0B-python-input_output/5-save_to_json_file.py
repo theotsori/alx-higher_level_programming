@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""function that save object to file"""
 import json
 
 
