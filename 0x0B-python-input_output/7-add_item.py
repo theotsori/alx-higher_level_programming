@@ -12,14 +12,16 @@ def save_to_json_file(my_obj, filename):
         json_string = json.dumps(my_obj)
         json_file.write(json_string)
 
+
 def load_from_json_file(filename):
     with open(filename, 'r') as json_file:
         json_string = json_file.read()
         return json.loads(json_string)
 
+
 try:
     data = load_from_json_file('add_item.json')
-except:
+except FileNotFoundError:
     data = []
 
 for item in sys.argv[1:]:
