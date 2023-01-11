@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """function that returns list of list rep pascal tri"""
 
+
 def pascal_triangle(n):
     """Implementation of the pascal triangle function"""
     if n <= 0:
