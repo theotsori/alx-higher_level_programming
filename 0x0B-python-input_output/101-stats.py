@@ -4,9 +4,8 @@ A script that reads stdin line by line and computes metrics
 """
 import sys
 
-count = 0
-file_size = 0
-status_count = {
+total_size = 0
+status_code_count = {
     200: 0,
     301: 0,
     400: 0,
@@ -16,24 +15,24 @@ status_count = {
     405: 0,
     500: 0
 }
+line_count = 0
 
 try:
     for line in sys.stdin:
-        count += 1
-        data = line.strip().split()
-        file_size += int(data[-1])
-        status = int(data[-2])
-        if status in status_count:
-            status_count[status] += 1
-
-        if count % 10 == 0:
-            print("Total file size: ", file_size)
-            for status_code in sorted(status_count):
-                if status_count[status_code] > 0:
-                    print(f"{status_code}: {status_count[status_code]}")
-            print("\n")
+        line_count += 1
+        parts = line.split(" ")
+        status_code = int(parts[-2])
+        file_size = int(parts[-1])
+        total_size += file_size
+        if status_code in status_code_count:
+            status_code_count[status_code] += 1
+        if line_count % 10 == 0:
+            print("Total file size: ", total_size)
+            for code in sorted(status_code_count.keys()):
+                if status_code_count[code] > 0:
+                    print(f"{code}: {status_code_count[code]}")
 except KeyboardInterrupt:
-    print("Total file size: ", file_size)
-    for status_code in sorted(status_count):
-        if status_count[status_code] > 0:
-            print(f"{status_code}: {status_count[status_code]}")
+    print("Total file size: ", total_size)
+    for code in sorted(status_code_count.keys()):
+        if status_code_count[code] > 0:
+            print(f"{code}: {status_code_count[code]}")
