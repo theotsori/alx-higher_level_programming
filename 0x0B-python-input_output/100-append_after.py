@@ -5,11 +5,11 @@
 
 def append_after(filename="", search_string="", new_string=""):
     """Implementation of search and update"""
-    lines = []
     with open(filename, 'r') as file:
-        for line in file:
-            lines.append(line)
-            if search_string in line:
-                lines.append(new_string + '\n')
+        lines = file.readlines()
+
     with open(filename, 'w') as file:
-        file.writelines(lines)
+        for line in lines:
+            file.write(line)
+            if search_string in line:
+                file.write(new_string + "\n")
