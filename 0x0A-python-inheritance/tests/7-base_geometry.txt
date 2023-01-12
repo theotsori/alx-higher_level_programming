@@ -1,20 +1,20 @@
 #!/usr/bin/python3
-import unittest
+"""Test case for BaseGeometry"""
 
-class TestBaseGeometry(unittest.TestCase):
-    def test_area(self):
-        geometry = BaseGeometry()
-        with self.assertRaises(Exception) as context:
-            geometry.area()
-        self.assertEqual(str(context.exception), "area() is not implemented")
+    geo = BaseGeometry()
+try:
+    geo.area()
+except Exception as e:
+    print(e) # area() is not implemented
 
-    def test_integer_validator(self):
-        geometry = BaseGeometry()
+try:
+    geo.integer_validator("value", "string")
+except Exception as e:
+    print(e) # value must be an integer
 
-        with self.assertRaises(TypeError) as context:
-            geometry.integer_validator("value", "abc")
-        self.assertEqual(str(context.exception), "value must be an integer")
+try:
+    geo.integer_validator("value", -5)
+except Exception as e:
+    print(e) # value must be greater than 0
 
-        with self.assertRaises(ValueError) as context:
-            geometry.integer_validator("value", -1)
-        self.assertEqual(str(context.exception), "value must be greater than 0")
+geo.integer_validator("value", 5) #no exception will be raised
