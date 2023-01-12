@@ -33,7 +33,7 @@ class Square(Rectangle):
     """A class Square grandchild of Base"""
     def __init__(self, size):
         self.__size = size
-        super().integer_validator(size, size)
+        super().integer_validator('size', size)
 
     def area(self):
         return self.__size * self.__size
