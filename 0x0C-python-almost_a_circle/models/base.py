@@ -37,3 +37,22 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    def update(self, *args, **kwargs):
+        if args:
+            for key, value in enumerate(args):
+                setattr(self, self.__class__.name__ + str(key), value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    @classmethod
+    def create(cls, **dictionary):
+        if cls.__name__ == "Rectangle":
+            instance = cls(1, 1)
+        elif cls.__name__ == "Square":
+            instance = cls(1)
+        else:
+            istance = cls()
+        instance.update(**dictionary)
+        return instance
