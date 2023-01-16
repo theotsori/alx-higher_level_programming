@@ -30,5 +30,20 @@ class Square(Rectangle):
     def height(self, value):
         self.size = value
 
+    def update(self, *args, **kwargs):
+        if args:
+            if len(args) > 4:
+                raise TypeError("update() takes from 1 to 4 positional arguments but {} were given".format(len(args)))
+            try:
+                self.id = args[0]
+                self.size = args[1]
+                self.x = args[2]
+                self.y = args[3]
+            except IndexError:
+                pass
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
     def __str__(self):
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
