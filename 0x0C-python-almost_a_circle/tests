@@ -1,0 +1,156 @@
+#!/usr/bin/python3
+""" base.py test_case """
+import json
+import unittest
+from modules.base import Base
+from modules.rectangle import Rectangle
+from modules.square import Square
+
+
+class Rectangle(Base):
+    def __init__(self, width, height, id=None):
+        super().__init__(id)
+        self.width = width
+        self.height = height
+
+    def to_dictionary(self):
+        return {'id': self.id, 'width': self.width, 'height': self.height}
+
+# Create a rectangle instance and save it to a file
+r1 = Rectangle(5, 10)
+r2 = Rectangle(2, 3)
+Rectangle.save_to_file([r1, r2])
+
+# load the rectangle instances from the file
+rectangles = Rectangle.load_from_file()
+
+# check if the instances are correctly loaded
+assert len(rectangles) == 2
+assert rectangles[0].__class__.__name__ == 'Rectangle'
+assert rectangles[0].width == 5
+assert rectangles[0].height == 10
+
+# check if the json representation of the instances is correct
+json_string = Rectangle.to_json_string([r.to_dictionary() for r in rectangles])
+loaded_rectangles = json.loads(json_string)
+assert len(loaded_rectangles) == 2
+assert loaded_rectangles[0]['width'] == 5
+assert loaded_rectangles[0]['height'] == 10
+
+""" rectangle.py test_case
+"""
+# Test creating a rectangle instance
+r1 = Rectangle(5, 10, 2, 3)
+assert r1.width == 5
+assert r1.height == 10
+assert r1.x == 2
+assert r1.y == 3
+
+# Test setting the width, height, x, and y properties
+r1.width = 7
+r1.height = 12
+r1.x = 4
+r1.y = 5
+assert r1.width == 7
+assert r1.height == 12
+assert r1.x == 4
+assert r1.y == 5
+
+# Test the area and display methods
+assert r1.area() == 84
+r1.display()
+# Expected output:
+#      ####
+#      ####
+#      ####
+#      ####
+#      ####
+
+# Test the update method
+r1.update(id=10, width=8, height=13, x=5, y=6)
+assert r1.id == 10
+assert r1.width == 8
+assert r1.height == 13
+assert r1.x == 5
+assert r1.y == 6
+
+# Test the to_dictionary method
+d = r1.to_dictionary()
+assert d == {'id': 10, 'width': 8, 'height': 13, 'x': 5, 'y': 6}
+
+# Test the json string representation of the instances
+json_string = Rectangle.to_json_string([r1.to_dictionary()])
+loaded_rectangles = json.loads(json_string)
+assert len(loaded_rectangles) == 1
+assert loaded_rectangles[0]['id'] == 10
+assert loaded_rectangles[0]['width'] == 8
+assert loaded_rectangles[0]['height'] == 13
+assert loaded_rectangles[0]['x'] == 5
+assert loaded_rectangles[0]['y'] == 6
+
+""" square.py tests case """
+# Test creating a square instance
+s1 = Square(5, 2, 3)
+assert s1.size == 5
+assert s1.x == 2
+assert s1.y == 3
+
+# Test setting the size, x, and y properties
+s1.size = 7
+s1.x = 4
+s1.y = 5
+assert s1.size == 7
+assert s1.x == 4
+assert s1.y == 5
+
+# Test the width and height are the same as the size
+assert s1.width == 7
+assert s1.height == 7
+
+# Test the area and display methods
+assert s1.area() == 49
+s1.display()
+# Expected output:
+#
+#
+#
+#      ######
+#      ######
+#      ######
+#      ######
+#      ######
+
+# Test the update method
+s1.update(id=10, size=8, x=5, y=6)
+assert s1.id == 10
+assert s1.size == 8
+assert s1.x == 5
+assert s1.y == 6
+
+# Test the to_dictionary method
+d = s1.to_dictionary()
+assert d == {'id': 10, 'size': 8, 'x': 5, 'y': 6}
+
+# Test the json string representationof the instances
+json_string = Square.to_json_string([s1.to_dictionary()])
+loaded_squares = json.loads(json_string)
+assert len(loaded_squares) == 1
+assert loaded_squares[0]['id'] == 10
+assert loaded_squares[0]['size'] == 8
+assert loaded_squares[0]['x'] == 5
+assert loaded_squares[0]['y'] == 6
+
+# Test save_to_file
+Square.save_to_file([s1])
+with open("Square.json", "r") as f:
+json_string_from_file = f.read()
+assert json_string_from_file == json_string
+
+# Test load_from_file
+loaded_squares_from_file = Square.load_from_file()
+assert len(loaded_squares_from_file) == 1
+assert loaded_squares_from_file[0].id == 10
+assert loaded_squares_from_file[0].size == 8
+assert loaded_squares_from_file[0].x == 5
+assert loaded_squares_from_file[0].y == 6
+
