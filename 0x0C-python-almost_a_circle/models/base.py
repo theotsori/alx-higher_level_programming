@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Base class"""
 import json
+import turtle
 
 
 class Base:
@@ -88,3 +89,33 @@ class Base:
                 return [cls.create(**d) for d in list_dictionaries]
         except FileNotFoundError:
             return []
+
+    @staticmethod
+    def draw(list_rectangle, list_squares):
+        for rect in list_rectangle:
+            turtle.color("red")
+            turtle.begin_fill()
+            turtle.forward(rect.width)
+            turtle.left(90)
+            turtle.forward(rect.height)
+            turtle.left(90)
+            turtle.forward(rect.width)
+            turtle.left(90)
+            turtle.forward(rect.height)
+            turtle.left(90)
+            turtle.end_fill()
+            turtle.forward(50)
+        for square in list_squares:
+            turtle.color("blue")
+            turtle.begin_fill()
+            turtle.forward(square.size)
+            turtle.left(90)
+            turtle.forward(square.size)
+            turtle.left(90)
+            turtle.forward(square.size)
+            turtle.left(90)
+            turtle.forward(square.size)
+            turtle.left(90)
+            turtle.end_fill()
+            turtle.forward(50)
+        turtle.exitonclick()
