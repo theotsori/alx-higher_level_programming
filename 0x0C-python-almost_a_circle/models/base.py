@@ -111,20 +111,20 @@ class Base:
     def draw(list_rectangle, list_squares):
         """Turtle draw from instructions"""
         for rect in list_rectangle:
-            turtle.color("red")
+            turtle.color("black")
             turtle.begin_fill()
             turtle.forward(rect.width)
-            turtle.left(90)
+            turtle.right(90)
             turtle.forward(rect.height)
-            turtle.left(90)
+            turtle.right(90)
             turtle.forward(rect.width)
             turtle.left(90)
             turtle.forward(rect.height)
-            turtle.left(90)
+            turtle.right(90)
             turtle.end_fill()
             turtle.forward(50)
         for square in list_squares:
-            turtle.color("blue")
+            turtle.color("brown")
             turtle.begin_fill()
             turtle.forward(square.size)
             turtle.left(90)
