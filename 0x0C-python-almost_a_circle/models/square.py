@@ -39,8 +39,8 @@ class Square(Rectangle):
         """checks args and kwargs"""
         if args:
             if len(args) > 4:
-                raise TypeError("update() takes from 1 to 4 positional
-                                arguments but {} were given".format(len(args)))
+                raise TypeError("update() takes from 1 to 4 positional"
+                                "argument but {} were given".format(len(args)))
             try:
                 self.id = args[0]
                 self.size = args[1]
