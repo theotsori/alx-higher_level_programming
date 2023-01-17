@@ -16,6 +16,8 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """ Initilizing of the base class
+        """
         if id is not None:
             self.id = id
         else:
@@ -24,6 +26,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+        """ Converting string to json """
         if list_dictionaries is None or not list_dictionaries:
             return "[]"
         else:
@@ -31,6 +34,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """Function to save file in json"""
         filename = cls.__name__ + ".json"
         if list_objs is None:
             list_objs = []
@@ -41,12 +45,14 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
+        """Loading from json file"""
         if json_string is None or not json_string:
             return []
         else:
             return json.loads(json_string)
 
     def update(self, *args, **kwargs):
+        """ updating parameters """
         if args:
             for key, value in enumerate(args):
                 setattr(self, self.__class__.name__ + str(key), value)
@@ -56,6 +62,7 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
+        """Using kwargs in a different way"""
         if cls.__name__ == "Rectangle":
             instance = cls(1, 1)
         elif cls.__name__ == "Square":
@@ -67,6 +74,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """loaing file from a json"""
         filename = cls.__name__ + ".json"
         try:
             with open(filename, "r") as f:
@@ -78,6 +86,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
+        """save file to a csv."""
         filename = cls.__name__ + ".csv"
         if list_objs is None:
             list_objs = []
@@ -88,6 +97,7 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
+        """Load from a csv file"""
         filename = cls.__name__ + ".csv"
         try:
             with open(filename, "r") as f:
@@ -99,6 +109,7 @@ class Base:
 
     @staticmethod
     def draw(list_rectangle, list_squares):
+        """Turtle draw from instructions"""
         for rect in list_rectangle:
             turtle.color("red")
             turtle.begin_fill()
