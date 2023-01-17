@@ -1,11 +1,18 @@
 #!/usr/bin/python3
+
 """ A Base class model for the almost a circle project. """
+
 import json
 import turtle
+import csv
 
 
 class Base:
-    """ Manage id attr in all future classes in this project. """
+    """Manage id attr in all future classes in this project.
+    Private Class Attribute:
+        __nb_object (int): Number of intialized bases
+    """
+
     __nb_objects = 0
 
     def __init__(self, id=None):
