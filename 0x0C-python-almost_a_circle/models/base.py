@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Base class"""
+""" A Base class model for the almost a circle project. """
 import json
 import turtle
 
 
 class Base:
-    """manage id attr in all future classes in this project"""
+    """ Manage id attr in all future classes in this project. """
     __nb_objects = 0
 
     def __init__(self, id=None):
