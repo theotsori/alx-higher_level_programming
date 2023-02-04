@@ -3,6 +3,8 @@
    A function that divides all elemnts of a matrix
    Checks whether it is an integer or not.
 """
+
+
 def matrix_divided(matrix, div):
     """
        Check if div is a number
