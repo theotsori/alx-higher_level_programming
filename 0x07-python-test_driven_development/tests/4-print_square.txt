@@ -3,35 +3,32 @@ import unittest
 
 from print_square import print_square
 
-def test_print_square():
-    # Test square of size 0
-    print_square(0)
-    assert output == ""
+def print_square(size):
+    """
+    This function receives an integer, size, and prints a square made of # characters with the given size.
 
-    # Test square of size 1
-    print_square(1)
-    assert output == "#"
+    >>> print_square(2)
+    ##
+    ##
 
-    # Test square of size 2
-    print_square(2)
-    assert output == "##\n##"
+    >>> print_square(3)
+    ###
+    ###
+    ###
 
-    # Test square of size 3
-    print_square(3)
-    assert output == "###\n###\n###"
+    >>> print_square(-3)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
 
-    # Test negative size
-    try:
-        print_square(-1)
-        assert False, "Exception not raised for negative size"
-    except ValueError:
-        pass
+    >>> print_square(3.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
 
-    # Test float size
-    try:
-        print_square(1.5)
-        assert False, "Exception not raised for float size"
-    except TypeError:
-        pass
-
-test_print_sqaure()
+    >>> print_square("a")
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+    """
+    pass
