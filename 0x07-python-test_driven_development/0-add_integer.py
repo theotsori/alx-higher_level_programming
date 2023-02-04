@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+   A module that adds two integers
+   takes a and b as integers or floats
+   and adds them together
+"""
 
 def add_integer(a, b=98):
     """Python script that adds two integers

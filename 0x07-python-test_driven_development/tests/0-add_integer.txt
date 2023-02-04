@@ -19,6 +19,10 @@ Using ``add_integer``
 101
 >>> add_integer(100, b=0)
 100
+>>> add_integer(-98, 98)
+0
+>>> add_integer(20.3, 5)
+25
 >>> add_integer(100, '2')
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
