@@ -1,4 +1,4 @@
--- A script thata lists all the tables of a database in your MySQL server
+-- Script that lists all tables of a database in MySQL server
 
 USE mysql;
 
