@@ -6,7 +6,7 @@ if (!x) {
   console.log('Missing size');
 } else {
   for (let i = 0; i < x; i++) {
-    let string = "";
+    let string = '';
     for (let j = 0; j < x; j++) {
       string += 'x';
     }
