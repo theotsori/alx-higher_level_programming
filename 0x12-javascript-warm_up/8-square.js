@@ -8,7 +8,7 @@ if (!x) {
   for (let i = 0; i < x; i++) {
     let string = '';
     for (let j = 0; j < x; j++) {
-      string += 'x';
+      string += 'X';
     }
     console.log(string);
   }
