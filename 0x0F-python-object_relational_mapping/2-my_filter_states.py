@@ -20,7 +20,8 @@ if __name__ == '__main__':
 
     cursor = conn.cursor()
 
-    query = f"SELECT * FROM states WHERE name LIKE '{state_name}' ORDER BY id"
+    query = "SELECT * FROM states WHERE name LIKE \
+        '{}' ORDER BY id".format(state_name)
     cursor.execute(query)
 
     results = cursor.fetchall()
@@ -28,4 +29,3 @@ if __name__ == '__main__':
         print(row)
 
     cursor.close()
-    conn.close()
