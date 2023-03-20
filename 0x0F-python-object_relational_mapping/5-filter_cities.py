@@ -32,8 +32,6 @@ def list_cities_by_state():
     results = cur.fetchall()
 
     print(", ".join(city[0] for city in results))
-    #for row in results:
-    #    print(row)
 
     cur.close()
     db.close()
