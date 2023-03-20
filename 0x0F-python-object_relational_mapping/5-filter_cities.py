@@ -24,14 +24,16 @@ def list_cities_by_state():
                          port=3306)
     cur = db.cursor()
 
-    cur.execute("SELECT cities.id, cities.name, states.name FROM cities\
-                INNER JOIN states ON cities.state_id = states.id\
+    cur.execute("SELECT cities.name FROM states\
+                JOIN cities ON states.id = cities.state_id\
                 WHERE states.name = %s\
                 ORDER BY cities.id ASC", (state,))
 
     results = cur.fetchall()
-    for row in results:
-        print(row)
+
+    print(", ".join(city[0] for city in results))
+    #for row in results:
+    #    print(row)
 
     cur.close()
     db.close()
