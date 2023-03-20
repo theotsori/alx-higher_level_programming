@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 
+""" Script that lists all states with a name 'N'
+"""
 import MySQLdb
 import sys
 
 if __name__ == '__main__':
-
+    """ script will take three args from the cmd
+    """
     mysql_user = sys.argv[1]
     mysql_password = sys.argv[2]
     db_name = sys.argv[3]
