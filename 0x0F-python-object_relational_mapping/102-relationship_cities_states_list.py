@@ -10,7 +10,7 @@ from relationship_state import State
 from relationship_city import City
 
 if __name__ == '__main__':
-    # Get command line arguments
+    """ Get command line arguments """
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
