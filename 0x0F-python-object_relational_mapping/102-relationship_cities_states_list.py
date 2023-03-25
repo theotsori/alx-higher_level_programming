@@ -24,18 +24,16 @@ def main():
     Returns:
         None.
     """
-    # Get the username, password, and database name from the command line arguments
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
 
-    # Create an SQLAlchemy engine and session
-    engine = create_engine(f'mysql+mysqldb://{username}:{password}@localhost/{db_name}',
+    engine = create_engine(f'mysql+mysqldb://{username}:\
+{password}@localhost/{db_name}',
                            pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query all City objects and print their details
     cities = session.query(City).order_by(City.id).all()
     for city in cities:
         print(f'{city.id}: {city.name} -> {city.state.name}')
