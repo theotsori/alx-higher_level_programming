@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+"""
+Fetches https://alx-intranet.hbtn.io/status using requests module
+"""
+
+import requests
+
+if __name__ == "__main__":
+    url = "https://alx-intranet.hbtn.io/status"
+    response = requests.get(url)
+
+    print("Body response:")
+    print("\t- type: {}".format(type(response.text)))
+    print("\t- content: {}".format(response.content))
+    print("\t- utf8 content: {}".format(response.text))
