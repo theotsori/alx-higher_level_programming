@@ -14,10 +14,10 @@ if __name__ == "__main__":
         q = sys.argv[1]
 
     try:
-        response = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
-        response_dict = response.json()
-        if response_dict:
-            print("[{}] {}".format(response_dict.get("id"), response_dict.get("name")))
+        res = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
+        res_dict = res.json()
+        if res_dict:
+            print("[{}] {}".format(res_dict.get("id"), res_dict.get("name")))
         else:
             print("No result")
     except ValueError:
