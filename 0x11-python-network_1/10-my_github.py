@@ -12,8 +12,8 @@ if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
 
-    response = requests.get('https://api.github.com/user', auth=(username, password))
-    if response.status_code == 200:
-        print(response.json()['id'])
+    re = requests.get('https://api.github.com/user', auth=(username, password))
+    if re.status_code == 200:
+        print(re.json()['id'])
     else:
         print('None')
