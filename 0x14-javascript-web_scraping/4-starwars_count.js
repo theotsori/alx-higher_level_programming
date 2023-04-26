@@ -1,8 +1,9 @@
 #!/usr/bin/node
-'use script';
+'use strict';
 
 const request = require('request');
 const apiUrl = process.argv[2];
+const characterId = 18;
 
 request(apiUrl, { json: true }, (error, response, body) => {
   if (error) {
@@ -11,7 +12,7 @@ request(apiUrl, { json: true }, (error, response, body) => {
   }
 
   const moviesWithWedge = body.results.filter(movie =>
-    movie.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')
+    movie.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
   );
 
   console.log(moviesWithWedge.length);
