@@ -11,9 +11,13 @@ request(apiUrl, { json: true }, (error, response, body) => {
     return;
   }
 
-  const moviesWithWedge = body.results.filter(movie =>
-    movie.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
-  );
+  const moviesWithWedge = body.results.filter(movie => {
+    const hasWedge = movie.characters.some(characterUrl => {
+      const containsWedge = characterUrl.includes(`/${characterId}/`);
+      return containsWedge;
+    });
+    return hasWedge;
+  });
 
   console.log(moviesWithWedge.length);
 });
